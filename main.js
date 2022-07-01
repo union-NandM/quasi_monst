@@ -1,16 +1,18 @@
-const vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty("--vh", `${vh}px`);
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight - 100;
-const cw = canvas.width;
-const ch = canvas.height;
+const container = document.getElementById("container");
 
-ctx.fillStyle = "#ffffff";
-ctx.fillRect(0, 0, cw, ch);
+let cw, ch;
+
+const init = () => {
+  canvas.width = container.clientWidth;
+  canvas.height = window.innerHeight - 100;
+  cw = canvas.width;
+  ch = canvas.height;
+  container.style.height = `${window.innerHeight}px`;
+};
+init();
 
 class Ball {
   constructor() {
@@ -97,3 +99,5 @@ setInterval(() => {
   ball.draw();
   ball.next();
 }, 20);
+
+window.addEventListener("resize", init);

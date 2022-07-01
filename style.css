@@ -8,8 +8,8 @@
 
 #container {
   position: relative;
-  height: calc(var(--vh, 1vh) * 100);
   background-color: black;
+  width: 100%;
 }
 
 #canvas {
