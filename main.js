@@ -45,6 +45,27 @@ class Ball {
         this.tsy = null;
       }
     });
+    window.addEventListener("mousedown", (ev) => {
+      if (this.vx === 0 && this.vy === 0) {
+        this.tsx = ev.clientX;
+        this.tsy = ev.clientY;
+      }
+    });
+    window.addEventListener("mouseup", (ev) => {
+      if (
+        this.vx === 0 &&
+        this.vy === 0 &&
+        this.tsx !== null &&
+        this.tsy !== null
+      ) {
+        const tex = ev.clientX;
+        const tey = ev.clientY;
+        this.vx = (this.tsx - tex) / 5;
+        this.vy = (this.tsy - tey) / 5;
+        this.tsx = null;
+        this.tsy = null;
+      }
+    });
   }
 
   next() {
